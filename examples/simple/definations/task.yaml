@@ -1,0 +1,14 @@
+auth:
+  users:
+    read:
+      - shashank
+      - bharath
+      - deva
+    create:
+      - shashank
+    update:
+      - deva
+    delete:
+      - bharath
+    all:
+      - admin

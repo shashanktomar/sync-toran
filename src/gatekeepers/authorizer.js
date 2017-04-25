@@ -1,1 +1,1 @@
-const authorizer = (doc, oldDoc, def) => {};
+export default function () {}

@@ -1,9 +1,11 @@
 import minimist from 'minimist';
 import fs from 'fs';
 import prettier from 'prettier';
-import parseDefs from './definationsParser';
+import parseDefs from './defParser';
 import parseTemplate from './templateParser';
 import prettierConfig from './config/prettier.json';
+
+import type { Definations } from './types';
 
 const args = minimist(process.argv.slice(2));
 
@@ -20,7 +22,7 @@ function writeSyncFunc(syncFunc: string) {
 }
 
 parseDefs(args.i)
-  .then(defs => parseTemplate(defs))
+  .then((defs: Definations) => parseTemplate(defs))
   .then(syncFunc => writeSyncFunc(syncFunc))
   .catch(err => {
     console.log(err);

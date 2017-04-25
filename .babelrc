@@ -3,11 +3,10 @@
   "plugins": [
     "transform-flow-strip-types",
     "transform-object-rest-spread",
-    "transform-remove-strict-mode",
     "inline-json-import",
-		["flow-runtime", {
-          "assert": true,
-          "annotate": true
+    ["flow-runtime", {
+      "assert": true,
+      "annotate": true
     }]
   ],
   "ignore": [

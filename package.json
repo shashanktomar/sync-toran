@@ -9,21 +9,25 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "npm run clean && babel src -d lib && cp src/template.js lib/template.js",
-    "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty ."
+    "build-strict": "npm run lint && npm run typecheck && npm run build",
+    "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
+    "lint-fix": "npm run lint -- --fix",
+    "test": "npm run typecheck && jest",
+    "test-watch": "jest --watch",
+    "typecheck": "flow",
+    "flowtyped": "flow-typed install"
   },
   "dependencies": {
-    "babel-generator": "^6.24.1",
-    "babel-template": "^6.24.1",
-    "babel-types": "^6.24.1",
-    "babylon": "^6.17.0",
-    "flow-runtime": "^0.10.0",
+    "js-object-pretty-print": "^0.3.0",
     "js-yaml": "^3.8.3",
     "lodash": "^4.17.4",
-    "prettier": "^1.2.2"
+    "prettier": "^1.2.2",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.2",
+    "babel-jest": "^19.0.0",
     "babel-plugin-flow-runtime": "^0.10.0",
     "babel-plugin-inline-json-import": "^0.2.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
@@ -37,9 +41,15 @@
     "eslint-plugin-flowtype": "^2.30.0",
     "eslint-plugin-flowtype-errors": "^3.0.3",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^19.0.1",
     "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-promise": "^3.5.0",
     "flow-bin": "^0.44.2",
+    "flow-runtime": "^0.10.0",
+    "flow-type": "^1.0.1",
+    "immutable": "^3.8.1",
+    "jest": "^19.0.2",
+    "regenerator-runtime": "^0.10.3",
     "rimraf": "^2.6.1"
   }
 }

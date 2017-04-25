@@ -1,1 +1,1 @@
-const assigner = (doc, oldDoc, def) => {};
+export default function () {}

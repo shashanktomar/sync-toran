@@ -1,1 +1,1 @@
-const validator = (doc, oldDoc, def) => {};
+export default function () {}

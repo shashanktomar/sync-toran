@@ -7,9 +7,11 @@
   "author": "Shashank Tomar",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf lib",
-    "build": "npm run clean && babel src -d lib && cp src/syncFunction.js lib/syncFunction.js",
-    "build-strict": "npm run lint && npm run typecheck && npm run build",
+    "patchTestHelper": "babel-node tools/patchTestHelper.js",
+    "pretranspile": "rimraf lib",
+    "transpile": "babel src -d lib && npm run patchTestHelper",
+    "build": "npm run lint && npm run typecheck && npm run transpile && npm run build:examples && npm run test",
+    "build:examples": "babel-node tools/buildExamples.js",
     "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
     "lint-fix": "npm run lint -- --fix",
     "test": "npm run typecheck && jest",
@@ -29,6 +31,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.2",
     "babel-jest": "^19.0.0",

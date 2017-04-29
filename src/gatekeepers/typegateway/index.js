@@ -5,7 +5,7 @@ import type { Defination, TypeGateway } from '../../types';
 import filters from './filters';
 
 export const defaultTypeFilterName = 'defaultTypeFilter';
-const missingTypeField = 'No "type" field is found in the doc';
+const missingTypeField = 'Type field validation failed';
 
 const typegateway: TypeGateway = initialState => {
   // eslint-disable-next-line no-unused-vars

@@ -2,12 +2,12 @@
 
 import testhelper from '../../../lib/testhelper';
 
-describe('simple example test', () => {
+describe('task list type filter tests', () => {
   beforeEach(() => {
-    testhelper.init('examples/simple/sync-func.js');
+    testhelper.init('examples/task-list/sync-func.js');
   });
 
-  describe('create test', () => {
+  describe('should create a doc', () => {
     it('should not throw error if type is task', () => {
       const doc = { type: 'task' };
       testhelper.callSyncFunction(doc);

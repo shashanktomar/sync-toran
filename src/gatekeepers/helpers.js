@@ -10,6 +10,7 @@ const isCreate: ActionChecker = docs =>
 
 const isUpdate: ActionChecker = docs => !isCreate(docs) && !isDelete(docs);
 
+// eslint-disable-next-line
 export const actions = {
   isDelete,
   isCreate,

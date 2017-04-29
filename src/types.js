@@ -49,4 +49,5 @@ export type TypeFilter = (state: State) => boolean;
 export type SyncFunction = string;
 export type DefinationsParser = (dir: string) => Promise<Definations>;
 export type TemplateParser = (defs: Definations) => Promise<SyncFunction>;
+export type SyncFunctionGenerator = (defs: Definations) => Promise<SyncFunction>;
 export type ActionChecker = (docs: Docs) => boolean;

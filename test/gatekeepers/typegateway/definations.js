@@ -2,13 +2,13 @@
 import { fromJS } from 'immutable';
 import type { Definations } from '../../../src/types';
 
-const doc = { type: 'task' };
-const oldDoc = { type: 'task' };
+const doc = { type: 'user' };
+const oldDoc = { type: 'user' };
 const defs: Definations = {
-  task: {
-    name: 'task',
+  user: {
+    name: 'user',
     typeFilter: 'defaultTypeFilter'
   }
 };
 export const initialState = fromJS({ doc, oldDoc, defs });
-export const state = fromJS({ doc, oldDoc, def: defs.task });
+export const state = fromJS({ doc, oldDoc, def: defs.user });

@@ -1,30 +1,31 @@
 import minimist from 'minimist';
 import fs from 'fs';
-import prettier from 'prettier';
 import parseDefs from './defParser';
-import parseTemplate from './templateParser';
-import prettierConfig from './config/prettier.json';
+import generator from './generator';
 
 import type { Definations } from './types';
 
 const args = minimist(process.argv.slice(2));
 
-function writeSyncFunc(syncFunc: string) {
+function writeSyncFunc(syncFunc: string, file: string) {
   return new Promise((resolve, reject) => {
     try {
-      const prettySyncFunc = prettier.format(syncFunc, prettierConfig);
-      fs.writeFileSync(args.o, prettySyncFunc);
+      fs.writeFileSync(file, syncFunc);
       resolve();
     } catch (err) {
       reject(err);
     }
   });
 }
+const inputDir = args.i;
+const outputFile = args.o;
 
-parseDefs(args.i)
-  .then((defs: Definations) => parseTemplate(defs))
-  .then(syncFunc => writeSyncFunc(syncFunc))
+parseDefs(inputDir)
+  .then((defs: Definations) => generator(defs))
+  .then(syncFunc => writeSyncFunc(syncFunc, outputFile))
   .catch(err => {
     console.log(err);
-    process.exit(err);
+    process.exit(1);
   });
+
+export default parseDefs;

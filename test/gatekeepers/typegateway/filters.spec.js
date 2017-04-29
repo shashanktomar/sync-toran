@@ -3,9 +3,6 @@
 import { state } from './definations';
 import typegateway from '../../../src/gatekeepers/typegateway';
 
-// TODO: find a way to remove try catch for error testing
-
-const typeErrors = typegateway.typeErrors;
 const defaultFilter = typegateway.filters.defaultTypeFilter;
 
 describe('defaultTypeFilter test', () => {
@@ -17,11 +14,12 @@ describe('defaultTypeFilter test', () => {
 
     it('should fail on create if type mismatch from def name', () => {
       const wrongTypeInput = input.setIn(['doc', 'type'], 'wrongType');
-      try {
-        defaultFilter(wrongTypeInput.toJS());
-      } catch (e) {
-        expect(e).toEqual({ forbidden: typeErrors.invalidTypeField });
-      }
+      expect(defaultFilter(wrongTypeInput.toJS())).toBeFalsy();
+    });
+
+    it('should fail on create if type is missing', () => {
+      const withoutType = input.deleteIn(['doc', 'type']);
+      expect(defaultFilter(withoutType.toJS())).toBeFalsy();
     });
   });
 
@@ -32,22 +30,14 @@ describe('defaultTypeFilter test', () => {
 
     it('should fail on update if old and new type mismatch', () => {
       const wrongTypeInput = state.setIn(['oldDoc', 'type'], 'wrongType');
-      try {
-        defaultFilter(wrongTypeInput.toJS());
-      } catch (err) {
-        expect(err).toEqual({ forbidden: typeErrors.typeFieldMismatch });
-      }
+      expect(defaultFilter(wrongTypeInput.toJS())).toBeFalsy();
     });
 
     it('should fail on update if type mismatch from def name', () => {
       const wrongTypeInput = state
         .setIn(['doc', 'type'], 'wrongType')
         .setIn(['oldDoc', 'type'], 'wrongType');
-      try {
-        defaultFilter(wrongTypeInput.toJS());
-      } catch (err) {
-        expect(err).toEqual({ forbidden: typeErrors.typeFieldMismatch });
-      }
+      expect(defaultFilter(wrongTypeInput.toJS())).toBeFalsy();
     });
   });
 
@@ -62,11 +52,7 @@ describe('defaultTypeFilter test', () => {
         .deleteIn(['doc', 'type'])
         .setIn(['doc', '_deleted'], true)
         .deleteIn(['oldDoc', 'type']);
-      try {
-        defaultFilter(input.toJS());
-      } catch (err) {
-        expect(err).toEqual({ forbidden: typeErrors.invalidDeleteType });
-      }
+      expect(defaultFilter(input.toJS())).toBeFalsy();
     });
   });
 });

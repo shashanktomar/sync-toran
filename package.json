@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && babel src -d lib && cp src/template.js lib/template.js",
+    "build": "npm run clean && babel src -d lib && cp src/syncFunction.js lib/syncFunction.js",
     "build-strict": "npm run lint && npm run typecheck && npm run build",
     "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
     "lint-fix": "npm run lint -- --fix",
@@ -18,10 +18,14 @@
     "flowtyped": "flow-typed install"
   },
   "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
     "js-object-pretty-print": "^0.3.0",
     "js-yaml": "^3.8.3",
     "lodash": "^4.17.4",
     "prettier": "^1.2.2",
+    "replace-in-file": "^2.5.0",
+    "stream-replace": "^1.0.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
@@ -50,6 +54,7 @@
     "immutable": "^3.8.1",
     "jest": "^19.0.2",
     "regenerator-runtime": "^0.10.3",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "webpack-node-externals": "^1.5.4"
   }
 }

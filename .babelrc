@@ -8,8 +8,5 @@
       "assert": true,
       "annotate": true
     }]
-  ],
-  "ignore": [
-    "template.js"
   ]
 }

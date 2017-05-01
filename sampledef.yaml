@@ -1,0 +1,20 @@
+channels:
+  prefix: value | $field | $field+value | $field1+$field2 | function [default=$type+$_id]
+  suffix: readwrite | all | function (default=readwrite)
+  scope: definations:scope
+auth:
+  users: definations:scope
+  roles: definations:scope
+assign:
+  users: definations:scope
+  roles: definations:scope
+definations:
+  scope:
+    create:
+      value | Array<> | function
+    update:
+      value | Array<> | function
+    delete:
+      value | Array<> | function
+    write:
+      value | Array<> | function

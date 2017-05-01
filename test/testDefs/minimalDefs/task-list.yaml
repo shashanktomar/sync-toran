@@ -1,0 +1,5 @@
+name: taskList
+typeFilter: customFilter
+channels:
+  prefix: 'customPrefix'
+  suffix: 'customSuffix'

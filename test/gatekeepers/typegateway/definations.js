@@ -7,7 +7,11 @@ const oldDoc = { type: 'user' };
 const defs: Definations = {
   user: {
     name: 'user',
-    typeFilter: 'defaultTypeFilter'
+    typeFilter: 'defaultTypeFilter',
+    channels: {
+      prefix: 'prefix',
+      suffix: 'readWrite'
+    }
   }
 };
 export const initialState = fromJS({ doc, oldDoc, defs });

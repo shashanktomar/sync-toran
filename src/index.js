@@ -1,8 +1,7 @@
 import fs from 'fs';
-import parseDefs from './defParser';
+import defReader from './defReader';
+import defSanitizer from './defSanitizer';
 import generator from './generator';
-
-import type { Definations } from './types';
 
 function writeSyncFunc(syncFunc: string, file: string) {
   return new Promise((resolve, reject) => {
@@ -16,8 +15,9 @@ function writeSyncFunc(syncFunc: string, file: string) {
 }
 
 const toran = (definationsDir, outputPath) =>
-  parseDefs(definationsDir)
-    .then((defs: Definations) => generator(defs))
+  defReader(definationsDir)
+    .then(defSanitizer)
+    .then(generator)
     .then(syncFunc => writeSyncFunc(syncFunc, outputPath))
     .catch(err => {
       console.log(err);

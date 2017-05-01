@@ -1,9 +1,13 @@
 import helpers from './gatekeepers/helpers';
 import filters from './gatekeepers/typegateway/filters';
 import typegateway from './gatekeepers/typegateway';
+import authorizer from './gatekeepers/authorizer';
 
 // Generated code
-var defs = undefined;
+const defs = undefined;
 
 // Do some actual work now
-typegateway.typegateway({ doc, oldDoc, defs });
+const initialState = { doc, oldDoc, defs }
+const gatekeepers = _.compose(typegateway.typegateway);
+
+gatekeepers(initialState, authorizer);

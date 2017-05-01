@@ -3,10 +3,6 @@
   "plugins": [
     "transform-flow-strip-types",
     "transform-object-rest-spread",
-    "inline-json-import",
-    ["flow-runtime", {
-      "assert": true,
-      "annotate": true
-    }]
+    "inline-json-import"
   ]
 }

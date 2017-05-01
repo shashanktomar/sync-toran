@@ -1,14 +1,29 @@
+channels:
+  prefix:
+    task+$_id
+  scope:
+    read:
+      - human
+    create:
+      - walle
+    update:
+      - eve
+    delete:
+      -
+    write:
+      - admin
 auth:
   users:
     read:
-      - shashank
-      - bharath
-      - deva
+      - walle
+      - eve
+      - human
     create:
-      - shashank
+      - walle
     update:
-      - deva
+      - eve
     delete:
-      - bharath
+      - human
     all:
       - admin
+  roles:

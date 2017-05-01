@@ -2065,10 +2065,6 @@ flow-parser@0.43.0:
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.43.0.tgz#e2b8eb1ac83dd53f7b6b04a7c35b6a52c33479b7"
 
-flow-runtime@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/flow-runtime/-/flow-runtime-0.10.0.tgz#20a70432fb20e8bba43769078c7a17d99dd1acab"
-
 flow-type@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/flow-type/-/flow-type-1.0.1.tgz#fe56161986cb6b3b7d43d425f5bfc0aaf2767bde"

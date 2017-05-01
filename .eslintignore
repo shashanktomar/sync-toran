@@ -2,5 +2,4 @@ lib
 bin
 src/syncFunction.js
 flow-typed
-sync-func.js
-webpack.*
+examples

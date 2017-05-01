@@ -3,7 +3,7 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
-import type { DefinationsReader } from './types';
+import type { Reader } from './types';
 
 const fetchDefFiles = (dir: string) =>
   new Promise((resolve, reject) => {
@@ -33,7 +33,6 @@ const readYamlDefinations = (dir: string, files: Array<string>) =>
     }
   });
 
-const defParser: DefinationsReader = dir =>
-  fetchDefFiles(dir).then(files => readYamlDefinations(dir, files));
+const defParser: Reader = dir => fetchDefFiles(dir).then(files => readYamlDefinations(dir, files));
 
 export default defParser;

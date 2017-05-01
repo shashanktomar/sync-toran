@@ -4,7 +4,6 @@ import _ from 'underscore';
 import type { Defination, TypeGateway } from '../../types';
 import filters from './filters';
 
-export const defaultTypeFilterName = 'defaultTypeFilter';
 const missingTypeField = 'Type field validation failed';
 
 const typegateway: TypeGateway = initialState => {

@@ -1,7 +1,6 @@
 // @flow
 import _ from 'lodash';
-import { defaultTypeFilterName } from './gatekeepers/typegateway';
-import type { Defination, InitialDefination, DefinationsSanitizer } from './types';
+import type { Defination, InitialDefination, Sanitizer } from './types';
 
 type DefinationValidator = (def: InitialDefination) => InitialDefination;
 type ParserChain = (parsers: Array<DefinationValidator>) => (def: InitialDefination) => Defination;
@@ -9,7 +8,7 @@ type ParserChain = (parsers: Array<DefinationValidator>) => (def: InitialDefinat
 const parserChain: ParserChain = parsers => _.flow(parsers);
 
 const typeFilterValidator: DefinationValidator = def => ({
-  typeFilter: def.typeFilter || defaultTypeFilterName,
+  typeFilter: def.typeFilter || 'defaultTypeFilter',
   ...def
 });
 
@@ -23,6 +22,6 @@ const channelsValidator: DefinationValidator = def => {
 
 const defValidators = parserChain([typeFilterValidator, channelsValidator]);
 
-const defSanitizer: DefinationsSanitizer = initialDefs => _.mapValues(initialDefs, defValidators);
+const defSanitizer: Sanitizer = initialDefs => _.mapValues(initialDefs, defValidators);
 
 export default defSanitizer;

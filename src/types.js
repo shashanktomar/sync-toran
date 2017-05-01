@@ -47,14 +47,7 @@ export type Defination = {
   assign?: Scopes
 };
 
-export type InitialDefination = {
-  name: string,
-  typeFilter?: TypeFilterName,
-  channels?: Channels
-};
-
 export type Definations = { [Type]: Defination };
-export type InitialDefinations = { [Type]: InitialDefination };
 export type InitialState = Docs & { defs: Definations };
 export type State = Docs & { def: Defination };
 
@@ -63,7 +56,6 @@ export type TypeGateway = (state: InitialState) => State;
 
 /* ----Other types---- */
 export type SyncFunction = string;
-export type DefinationsReader = (dir: string) => Promise<InitialDefinations>;
-export type DefinationsSanitizer = (defs: InitialDefinations) => Promise<Definations>;
+export type DefinationsReader = (dir: string) => Promise<Definations>;
 export type SyncFunctionGenerator = (defs: Definations) => Promise<SyncFunction>;
 export type ActionChecker = (docs: Docs) => boolean;
